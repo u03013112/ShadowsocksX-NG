@@ -238,6 +238,15 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
     func doToggleRunning(showToast: Bool) {
         let defaults = UserDefaults.standard
         var isOn = UserDefaults.standard.bool(forKey: "ShadowsocksOn")
+        
+        if (isOn == false) {
+            let dict = [String:Any]()
+            let config = synchronousPost(urlStr:"http://127.0.0.1/v1/config/get-config",data:dict)
+            print(config)
+            setProfile(data:config as! [String:Any])
+            updateServersMenu()
+        }
+        
         isOn = !isOn
         defaults.set(isOn, forKey: "ShadowsocksOn")
         
