@@ -34,7 +34,7 @@ func synchronousPost(urlStr:String,data:Any) -> Any{
         //暂时采用同步的，比较简单，如果有必要可以改成异步。
         let received =  try NSURLConnection.sendSynchronousRequest(urlRequest, returning: &response)
         let dic = try JSONSerialization.jsonObject(with: received, options: JSONSerialization.ReadingOptions.allowFragments)
-//        print(dic)
+        print(dic)
         //let jsonStr = String(data: received, encoding:String.Encoding.utf8);
         //print(jsonStr)
         return dic

@@ -199,6 +199,14 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
 
         // Register global hotkey
         ShortcutsController.bindShortcuts()
+        
+        // 增加一个定时器，定期的去上报状态，和接受最新的配置
+        Timer.scheduledTimer(withTimeInterval: TimeInterval(30), repeats: true, block:{(timer: Timer) -> Void in
+            if (UserDefaults.standard.bool(forKey: "ShadowsocksOn") == true){
+                print("update")
+                Config.instance.getConfig()
+            }
+        })
     }
     
     func applicationWillTerminate(_ aNotification: Notification) {
@@ -240,10 +248,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         var isOn = UserDefaults.standard.bool(forKey: "ShadowsocksOn")
         
         if (isOn == false) {
-            let dict = [String:Any]()
-            let config = synchronousPost(urlStr:"http://127.0.0.1/v1/config/get-config",data:dict)
-            print(config)
-            setProfile(data:config as! [String:Any])
+            Config.instance.getConfig()
             updateServersMenu()
         }
         

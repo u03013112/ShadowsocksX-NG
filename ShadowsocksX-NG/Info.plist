@@ -49,5 +49,10 @@
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
 	<string>SWBApplication</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 </dict>
 </plist>
