@@ -1,0 +1,18 @@
+
+/* Class = "NSTextFieldCell"; placeholderString = "passwd"; ObjectID = "LBn-fA-Aky"; */
+"LBn-fA-Aky.placeholderString" = "密码";
+
+/* Class = "NSTextFieldCell"; title = "Passwd:"; ObjectID = "OZC-62-BIl"; */
+"OZC-62-BIl.title" = "输入密码:";
+
+/* Class = "NSWindow"; title = "Login"; ObjectID = "QvC-M9-y7g"; */
+"QvC-M9-y7g.title" = "登录";
+
+/* Class = "NSTextFieldCell"; placeholderString = "username"; ObjectID = "Zlg-TR-1BN"; */
+"Zlg-TR-1BN.placeholderString" = "用户名";
+
+/* Class = "NSButtonCell"; title = "Login"; ObjectID = "boq-gr-AN6"; */
+"boq-gr-AN6.title" = "登录";
+
+/* Class = "NSTextFieldCell"; title = "Username:"; ObjectID = "pgn-Pk-Jst"; */
+"pgn-Pk-Jst.title" = "输入用户名:";

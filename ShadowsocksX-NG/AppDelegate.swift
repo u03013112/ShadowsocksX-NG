@@ -21,7 +21,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
     var allInOnePreferencesWinCtrl: PreferencesWinController!
     var toastWindowCtrl: ToastWindowController!
     var importWinCtrl: ImportWindowController!
-
+    var loginWinCtrl: LoginWindowController!
+    
     @IBOutlet weak var window: NSWindow!
     @IBOutlet weak var statusMenu: NSMenu!
     
@@ -46,6 +47,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
     @IBOutlet weak var panelView: NSView!
     @IBOutlet weak var isNameTextField: NSTextField!
 
+    @IBOutlet weak var loginMenuItem: NSMenuItem!
+    
     let kProfileMenuItemIndexBase = 100
 
     var statusItem: NSStatusItem!
@@ -123,6 +126,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
                 self.applyConfig()
                 self.updateRunningModeMenu()
                 self.updateCopyHttpProxyExportMenu()
+                self.updateMainMenu()
             })
         
         notifyCenter.addObserver(forName: NOTIFY_SERVER_PROFILES_CHANGED, object: nil, queue: nil
@@ -200,6 +204,14 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         // Register global hotkey
         ShortcutsController.bindShortcuts()
         
+        if ((defaults.string(forKey: "token")) != nil){
+            let token = defaults.string(forKey: "token")!
+            if (token != ""){
+                Config.instance.token = token
+                self.updateMainMenu()
+            }
+        }
+        
         // 增加一个定时器，定期的去上报状态，和接受最新的配置
         Timer.scheduledTimer(withTimeInterval: TimeInterval(30), repeats: true, block:{(timer: Timer) -> Void in
             if (UserDefaults.standard.bool(forKey: "ShadowsocksOn") == true){
@@ -252,7 +264,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         defaults.set(isOn, forKey: "ShadowsocksOn")
         
         if (isOn == true) {
-            Config.instance.login(username: "admin", passwd: "123456")
             Config.instance.getConfig()
             updateServersMenu()
         }
@@ -561,6 +572,12 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         }
         statusItem.image?.isTemplate = true
         
+        if (Config.instance.token != ""){
+            self.loginMenuItem.title = "Logout"
+        }else{
+            self.loginMenuItem.title = "Login"
+        }
+        
         updateStatusMenuImage()
     }
     
@@ -673,6 +690,27 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         //NSApp.activate(ignoringOtherApps: true)
         //toastWindowCtrl.window?.makeKeyAndOrderFront(self)
         toastWindowCtrl.fadeInHud()
+    }
+    
+    @IBAction func didLoginClicked(_ sender: NSMenuItem) {
+        if loginWinCtrl != nil {
+            print("close")
+            loginWinCtrl.close()
+        }
+        if (Config.instance.token != ""){
+            self.loginMenuItem.title = "Login"
+            Config.instance.token = ""
+            UserDefaults.standard.set("", forKey: "token")
+            UserDefaults.standard.set("", forKey: "username")
+            Config.instance.getConfig()
+            self.updateMainMenu()
+            self.applyConfig()
+        }else{
+            loginWinCtrl = LoginWindowController(windowNibName: .init(rawValue: "LoginWindowController"))
+            loginWinCtrl.showWindow(self)
+            NSApp.activate(ignoringOtherApps: true)
+//            loginWinCtrl.window?.makeKeyAndOrderFront(nil)
+        }
     }
 }
 

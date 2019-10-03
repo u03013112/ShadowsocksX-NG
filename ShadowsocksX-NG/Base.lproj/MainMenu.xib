@@ -18,6 +18,7 @@
                 <outlet property="copyHttpProxyExportCmdLineMenuItem" destination="lg6-To-GZA" id="VTb-he-dg4"/>
                 <outlet property="externalPACModeMenuItem" destination="U9N-QS-BwB" id="ING-P9-2Xz"/>
                 <outlet property="globalModeMenuItem" destination="Mw3-Jm-eXA" id="ar5-Yx-3ze"/>
+                <outlet property="loginMenuItem" destination="D4j-Dh-rnd" id="Bo5-xo-eDz"/>
                 <outlet property="manualModeMenuItem" destination="8PR-gs-c5N" id="9qz-mU-5kt"/>
                 <outlet property="runningStatusMenuItem" destination="fzk-mE-CEV" id="Vwm-Rg-Ykn"/>
                 <outlet property="scanQRCodeMenuItem" destination="Qe6-bF-paT" id="XHa-pa-nCa"/>
@@ -38,6 +39,12 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="toggleRunning:" target="Voe-Tx-rLC" id="EvE-23-Wiv"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Login" id="D4j-Dh-rnd">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="didLoginClicked:" target="Voe-Tx-rLC" id="eOH-g6-8tD"/>
                     </connections>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="LXP-yK-yQu"/>

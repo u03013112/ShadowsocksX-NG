@@ -84,6 +84,8 @@
 		9BEEF0701D04DDB100FC52B3 /* ServerProfileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BEEF06F1D04DDB100FC52B3 /* ServerProfileManager.swift */; };
 		9BEEF0751D04EF3E00FC52B3 /* PreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BEEF0731D04EF3E00FC52B3 /* PreferencesWindowController.swift */; };
 		9BEEF0781D04FE8A00FC52B3 /* LaunchAgentUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BEEF0771D04FE8A00FC52B3 /* LaunchAgentUtils.swift */; };
+		A7D0D81723463D0A00093FC4 /* LoginWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D0D81623463D0900093FC4 /* LoginWindowController.swift */; };
+		A7D0D81B23463F9400093FC4 /* LoginWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7D0D81D23463F9400093FC4 /* LoginWindowController.xib */; };
 		A7DC5C172341B5B000021465 /* HTTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DC5C162341B5B000021465 /* HTTP.swift */; };
 		A7DC5C192341C53200021465 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DC5C182341C53200021465 /* Config.swift */; };
 		B5A2AB03221A72EC003F77B7 /* v2ray-plugin in Resources */ = {isa = PBXBuildFile; fileRef = B5A2AB01221A72EC003F77B7 /* v2ray-plugin */; };
@@ -254,6 +256,9 @@
 		9BEEF06F1D04DDB100FC52B3 /* ServerProfileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerProfileManager.swift; sourceTree = "<group>"; };
 		9BEEF0731D04EF3E00FC52B3 /* PreferencesWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferencesWindowController.swift; sourceTree = "<group>"; };
 		9BEEF0771D04FE8A00FC52B3 /* LaunchAgentUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchAgentUtils.swift; sourceTree = "<group>"; };
+		A7D0D81623463D0900093FC4 /* LoginWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWindowController.swift; sourceTree = "<group>"; };
+		A7D0D81C23463F9400093FC4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LoginWindowController.xib; sourceTree = "<group>"; };
+		A7D0D81F23463F9B00093FC4 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LoginWindowController.strings"; sourceTree = "<group>"; };
 		A7DC5C162341B5B000021465 /* HTTP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTP.swift; sourceTree = "<group>"; };
 		A7DC5C182341C53200021465 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		B4E6A97CA843F3943524B686 /* Pods-proxy_conf_helper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-proxy_conf_helper.debug.xcconfig"; path = "Pods/Target Support Files/Pods-proxy_conf_helper/Pods-proxy_conf_helper.debug.xcconfig"; sourceTree = "<group>"; };
@@ -436,6 +441,8 @@
 				9B7297EE214DA88A00FD24AA /* ShareServerProfilesWindowController.xib */,
 				9B72FB60232782A300C6AAAE /* ImportWindowController.swift */,
 				9B74B5EB232949B100DEA386 /* ImportWindowController.xib */,
+				A7D0D81623463D0900093FC4 /* LoginWindowController.swift */,
+				A7D0D81D23463F9400093FC4 /* LoginWindowController.xib */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -688,6 +695,7 @@
 				9BCB1D6D20A15B0E005BABE7 /* libcares.2.dylib in Resources */,
 				9BBE7B751F508A0E00E8FFE5 /* fix_dir_owner.sh in Resources */,
 				9BAA66382329636200F5CC99 /* user-privoxy.config in Resources */,
+				A7D0D81B23463F9400093FC4 /* LoginWindowController.xib in Resources */,
 				9B3F7BFF1E82BF5B00C68B75 /* libev.4.dylib in Resources */,
 				9BAA662D23295FAC00F5CC99 /* icons8-Blind Filled-50.png in Resources */,
 				9BAA663623295FAC00F5CC99 /* menu_g_icon.png in Resources */,
@@ -859,6 +867,7 @@
 				9B0BFFE91D0460A70040E62B /* AppDelegate.swift in Sources */,
 				9B84DAED2163A72F00DFF068 /* Diagnose.swift in Sources */,
 				9BA04B231D23D5A5005AAD7F /* ProxyConfTool.m in Sources */,
+				A7D0D81723463D0A00093FC4 /* LoginWindowController.swift in Sources */,
 				9B5831FF1E741969009D5B7D /* PreferencesWinController.swift in Sources */,
 				9BEEF0781D04FE8A00FC52B3 /* LaunchAgentUtils.swift in Sources */,
 				A7DC5C172341B5B000021465 /* HTTP.swift in Sources */,
@@ -952,6 +961,15 @@
 				9BAFE2E91E83EDDF00F71CCE /* zh-Hans */,
 			);
 			name = PreferencesWinController.xib;
+			sourceTree = "<group>";
+		};
+		A7D0D81D23463F9400093FC4 /* LoginWindowController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A7D0D81C23463F9400093FC4 /* Base */,
+				A7D0D81F23463F9B00093FC4 /* zh-Hans */,
+			);
+			name = LoginWindowController.xib;
 			sourceTree = "<group>";
 		};
 		C8E42A701D4F2CAF0074C7EA /* UserRulesController.xib */ = {

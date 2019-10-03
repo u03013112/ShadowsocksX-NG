@@ -69,6 +69,10 @@ class Config: NSObject {
         }
         if (token["token"] as? String != nil){
             self.token = token["token"] as! String
+            
+//            save here
+            UserDefaults.standard.set(self.token, forKey: "token")
+            UserDefaults.standard.set(username, forKey: "username")
         }
     }
 }
