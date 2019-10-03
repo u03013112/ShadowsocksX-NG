@@ -203,8 +203,9 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         // 增加一个定时器，定期的去上报状态，和接受最新的配置
         Timer.scheduledTimer(withTimeInterval: TimeInterval(30), repeats: true, block:{(timer: Timer) -> Void in
             if (UserDefaults.standard.bool(forKey: "ShadowsocksOn") == true){
-                print("update")
                 Config.instance.getConfig()
+                self.updateMainMenu()
+                self.applyConfig()
             }
         })
     }
@@ -247,13 +248,14 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         let defaults = UserDefaults.standard
         var isOn = UserDefaults.standard.bool(forKey: "ShadowsocksOn")
         
-        if (isOn == false) {
+        isOn = !isOn
+        defaults.set(isOn, forKey: "ShadowsocksOn")
+        
+        if (isOn == true) {
+            Config.instance.login(username: "admin", passwd: "123456")
             Config.instance.getConfig()
             updateServersMenu()
         }
-        
-        isOn = !isOn
-        defaults.set(isOn, forKey: "ShadowsocksOn")
         
         self.updateMainMenu()
         self.applyConfig()

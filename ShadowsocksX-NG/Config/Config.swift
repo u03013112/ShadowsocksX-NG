@@ -13,6 +13,7 @@ class Config: NSObject {
     static let instance:Config = Config()
     
     var data:[String:Any] = [:]
+    var token = ""
     
     func updateData(data:[String:Any]) -> Bool{
         if ((NSDictionary(dictionary: data).isEqual(to: self.data))==false){
@@ -23,7 +24,6 @@ class Config: NSObject {
     }
     
     func setProfile(data:[String:Any]) {
-        
         if (updateData(data: data)==false){
 //            no update
             return
@@ -46,10 +46,29 @@ class Config: NSObject {
         SyncSSLocal()
     }
 
-    func getConfig() {
-        let dict = [String:Any]()
+    func getConfig(){
+        var dict = [String:Any]()
+        dict["token"] = self.token
         let config = synchronousPost(urlStr:"http://frp.u03013112.win:18021/v1/config/get-config",data:dict)
-        self.setProfile(data:config as! [String:Any])
+        let data = config as! [String:Any]
+        if (data["error"] as? String != nil){
+            UserDefaults.standard.set(false, forKey: "ShadowsocksOn")
+            return
+        }
+        self.setProfile(data:data)
     }
-
+    
+    func login(username:String ,passwd:String){
+        var dict = [String:Any]()
+        dict["username"] = username
+        dict["passwd"] = passwd
+        let token = synchronousPost(urlStr:"http://frp.u03013112.win:18021/v1/user/login",data:dict) as! [String:Any]
+        
+        if (token["error"] as? String != nil){
+            print("login err:",token["message"] as! String)
+        }
+        if (token["token"] as? String != nil){
+            self.token = token["token"] as! String
+        }
+    }
 }
