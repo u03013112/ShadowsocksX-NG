@@ -217,7 +217,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
             if (UserDefaults.standard.bool(forKey: "ShadowsocksOn") == true){
                 Config.instance.getConfig()
                 self.updateMainMenu()
-                self.applyConfig()
+//                self.applyConfig()
             }
         })
     }

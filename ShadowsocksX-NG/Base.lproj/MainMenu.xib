@@ -73,7 +73,7 @@
                     </connections>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="BMf-0T-UcX"/>
-                <menuItem title="Servers" id="u5M-hQ-VSc">
+                <menuItem title="Servers" hidden="YES" id="u5M-hQ-VSc">
                     <modifierMask key="keyEquivalentModifierMask" shift="YES"/>
                     <menu key="submenu" title="Servers" id="9Y1-db-3HK">
                         <items>
@@ -88,19 +88,19 @@
                         </items>
                     </menu>
                 </menuItem>
-                <menuItem title="Scan QR Code From Screen" id="Qe6-bF-paT">
+                <menuItem title="Scan QR Code From Screen" hidden="YES" id="Qe6-bF-paT">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="scanQRCodeFromScreen:" target="Voe-Tx-rLC" id="zQZ-IT-H4a"/>
                     </connections>
                 </menuItem>
-                <menuItem title="Import Server URLs..." id="geG-dQ-OYl">
+                <menuItem title="Import Server URLs..." hidden="YES" id="geG-dQ-OYl">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="showImportWindow:" target="-1" id="CsE-vW-Wcn"/>
                     </connections>
                 </menuItem>
-                <menuItem title="Share Server Profiles..." image="NSShareTemplate" id="r5z-RB-LIZ">
+                <menuItem title="Share Server Profiles..." image="NSShareTemplate" hidden="YES" id="r5z-RB-LIZ">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="showShareServerProfiles:" target="Voe-Tx-rLC" id="3Qv-n1-5h1"/>

@@ -35,6 +35,9 @@ class Config: NSObject {
             profile = profileMgr.profiles[0]//mod first one
         }
         profile.remark = "J"
+        if (data["IP"] as? String == nil) {
+            return
+        }
         profile.serverHost = data["IP"] as! String
         profile.serverPort = UInt16(data["port"] as! String) ?? 58700
         profile.method = data["method"] as! String
